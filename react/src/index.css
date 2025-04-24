@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+.bg-layer{
+    background-image: url(/bg_layer.png);
+}
+
+/* In App.css or global styles */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+  }
+  
