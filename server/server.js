@@ -2,6 +2,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
+import { userRouter } from './routes/userRoutes.js'
 
 const dbConnect = async()=>{
    await mongoose.connect(process.env.MONGO_URL);
@@ -22,5 +23,7 @@ app.use(cors())
 app.get('/',(req,res)=>{
     res.send("api working");
 })
+app.use('/api/user',userRouter);
+
 
 app.listen(PORT,()=>{console.log(`App running on ${PORT}`)})
