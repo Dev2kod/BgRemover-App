@@ -3,7 +3,7 @@ import { userModel } from '../models/userModel.js'
 // manage clerk with db
 //http://localhost:4000/api/user/webhooks
 
-const clerkWebhooks = async()=>{
+const clerkWebhooks = async(req,res)=>{
 
     try {
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET) 

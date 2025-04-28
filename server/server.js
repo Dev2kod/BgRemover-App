@@ -25,5 +25,4 @@ app.get('/',(req,res)=>{
 })
 app.use('/api/user',userRouter);
 
-
 app.listen(PORT,()=>{console.log(`App running on ${PORT}`)})
