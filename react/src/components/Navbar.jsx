@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import {assets} from '../assets/assets'
 import { Link } from 'react-router-dom'
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react'
+import { AppContext } from '../context/AppContext.jsx'
 
 const Navbar = () => {
   const { openSignIn } = useClerk();
   const {isSignedIn, user} = useUser();
+  const {credit,loadCreditData} = useContext(AppContext)
+  console.log(user)
+  useEffect(()=>{
+    if(isSignedIn){
+      loadCreditData();
+      console.log(credit)
+    }
+  },[isSignedIn])
 
   return (
     <div className='flex items-center justify-between py-3 mx-4 lg:mx-44'>
@@ -13,8 +22,12 @@ const Navbar = () => {
         {
           isSignedIn?
           <div className='flex items-center gap-6'>
+            <button className='flex items-center font-semibold gap-3 px-4 py-2 bg-blue-100 rounded-full transition-all duration-500 hover:scale-105 transition-all duration-500 cursor-pointer'>
+              <img className='w-5' src={assets.credit_icon} alt="" />
+              <p className='text-sm'>Credits: {credit}</p>
+            </button>
+            <div>Hi {user.fullName}!</div>
             <UserButton/>
-            <div className=' text-white gap-4 px-4 py-2 bg-zinc-800 rounded-full hover:'>{user.fullName}</div>
           </div>
           :        
           <button onClick={()=>openSignIn({})} className='flex items-center gap-4 px-4 py-2 bg-zinc-800 rounded-full hover:scale-105 transition-all duration-700 cursor-pointer '>

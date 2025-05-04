@@ -6,11 +6,13 @@ import BuyCredit from './pages/BuyCredit'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { SignInButton } from '@clerk/clerk-react'
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <BrowserRouter>
+        <ToastContainer position='bottom-right'/>
         <Navbar />
         <div className="flex-grow">
           <Routes>
