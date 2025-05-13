@@ -8,7 +8,8 @@ const AppContext = createContext()
 const AppContextProvider = (props) =>{
     const [credit, setCredit] = useState(false);
     const [image, setImage] = useState(false)
-
+    const [video, setVideo] = useState(false)
+    
     const backendurl = import.meta.env.VITE_BACKEND
     
     const {getToken} = useAuth();
@@ -32,7 +33,8 @@ const AppContextProvider = (props) =>{
         credit,setCredit,
         loadCreditData,
         backendurl,
-        image,setImage
+        image,setImage,
+        video,setVideo
     }
     return(
         <AppContext.Provider value={value}>
